@@ -1,26 +1,62 @@
-title,body,labels,acceptance_criteria,technical_notes
-"US1.1: Registro de Usuarios","**Como** cocinero nuevo, **quiero** crear una cuenta con mi correo y contraseña, **para** acceder a las funciones de creación de recetas.
 
-### Descripción Detallada:
+# Product Backlog - El Culinario
+
+## US1.1: Registro de Usuarios
+**Como** cocinero nuevo, **quiero** crear una cuenta con mi correo y contraseña, **para** acceder a las funciones de creación de recetas.
+
+### Descripción Detallada
 El usuario debe poder registrarse de forma rápida y segura. El sistema validará la información para evitar duplicados y asegurar contraseñas fuertes.
 
-### Criterios de Aceptación:
-- [ ] Formulario con campos: Nombre completo, Correo electrónico y Contraseña (con confirmación).
-- [ ] Validar que el correo no esté registrado previamente (mostrar error claro).
-- [ ] Validar fortaleza de contraseña (mínimo 8 caracteres, mayúsculas, números y símbolos).
-- [ ] Contraseña encriptada en base de datos (usar bcrypt o similar).
-- [ ] Enviar email de confirmación para validar el correo.
-- [ ] Redirigir al Login tras un registro exitoso.
-- [ ] Mostrar notificación de éxito: 'Cuenta creada. Revisa tu email para confirmar'.
-- [ ] Implementar CAPTCHA para evitar bots.
-- [ ] Términos y condiciones (checkbox obligatorio).","epic:autenticacion,prioridad:alta,sprint:1","1. Email validation (regex + backend check)
-2. Password hashing (bcrypt, salt rounds ≥ 10)
-3. Email confirmation token (JWT, 24h expiry)
-4. CAPTCHA integration (reCAPTCHA v3)
-5. Error handling for duplicate emails","- Use nodemailer or SendGrid for email
-- Store hashed passwords only
-- Implement rate limiting
-- Log registration attempts"
+### Criterios de Aceptación (Gherkin)
+
+**Escenario 1: Registro exitoso con información válida**
+```gherkin
+Dado que estoy en la página de registro
+Y no tengo una cuenta en la plataforma
+Cuando completo el formulario con:
+  | Campo         | Valor                        |
+  | Nombre        | Juan Pérez                   |
+  | Correo        | juan@example.com             |
+  | Contraseña    | SecurePass123!               |
+  | Confirmación  | SecurePass123!               |
+Y acepto los términos y condiciones
+Y completo el CAPTCHA
+Y hago clic en "Registrarse"
+Entonces el sistema valida que el correo no esté registrado
+Y encripta la contraseña con bcrypt
+Y envía un email de confirmación
+Y redirige a la página de login
+Y muestro el mensaje "Cuenta creada. Revisa tu email para confirmar"
+
+**Escenario 2: Rechazo por duplicado**
+Dado que existe una cuenta con correo juan@example.com
+Y estoy en la página de registro
+Cuando completo el formulario con correo juan@example.com
+Y hago clic en "Registrarse"
+Entonces el sistema rechaza el registro
+Y muestra error: "Este correo ya está registrado"
+
+**Escenario 3: Rechazo por contraseña débil**
+Dado que estoy en la página de registro
+Cuando intento registrarme con contraseña "123456"
+Entonces el sistema valida la fortaleza
+Y rechaza la contraseña
+Y muestro error: "La contraseña debe tener mínimo 8 caracteres, mayúsculas, números y símbolos"
+
+**Escenario 4: Rechazo por confirmación de contraseña incorrecta**
+Dado que completo el formulario
+Cuando ingreso contraseña "SecurePass123!" y confirmación "OtherPass123!"
+Y hago clic en "Registrarse"
+Entonces el sistema detecta que las contraseñas no coinciden
+Y muestra error: "Las contraseñas no coinciden"
+
+**Escenario 5: Bloqueo de bots con CAPTCHA**
+**Dado que estoy en la página de registro
+Cuando intento registrarme sin completar el CAPTCHA
+Y hago clic en "Registrarse"
+Entonces el sistema rechaza el envío
+Y muestra error: "Debes completar el CAPTCHA"**
+
 "US1.2: Inicio y Cierre de Sesión","**Como** usuario registrado, **quiero** iniciar y cerrar sesión con mis credenciales, **para** proteger y administrar mis platillos guardados.
 
 ### Descripción Detallada:
