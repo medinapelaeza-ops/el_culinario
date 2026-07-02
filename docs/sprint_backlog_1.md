@@ -17,7 +17,7 @@
 
 ---
 
-## Detailed Tasks
+## Detailed Tasks 
 
 ### TASK-1: US1.1 - Registro de Usuarios
 **Prioridad:** Alta  
@@ -306,7 +306,7 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
   - Incrementar con cada acceso a detalle
   - No contar vistas del propietario (opcional)
 
-- [ ] **Pruebas**
+- [ ] **Pruebas** 
   - Test: Ver catálogo con paginación
   - Test: Filtrar por categoría
   - Test: Filtrar por dificultad
@@ -316,7 +316,7 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
   - Test: Ordenar por popularidad
   - Test: Ver detalle y contador incrementa
 
-#### Criterios de Aceptación Específicos
+#### Criterios de Aceptación Específicos 🉑
 ✓ Escenario 1: Ver catálogo de platillos  
 ✓ Escenario 2: Filtrar por categoría  
 ✓ Escenario 3: Filtrar por dificultad  
@@ -328,7 +328,7 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 
 ---
 
-## Definición de Hecho (Definition of Done)
+## Definición de Hecho (Definition of Done):
 
 - [ ] Código revisado y aprobado en PR
 - [ ] Tests unitarios con cobertura >80%
@@ -344,7 +344,8 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 
 ---
 
-## Notas del Sprint
+## Notas del Sprint📓
+
 
 - Enfoque en autenticación y seguridad como base
 - Establecer patrones de código reutilizable
@@ -353,7 +354,7 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 
 ---
 
-## Roles
+## Roles:
 
 - **Product Owner:** medinapelaeza-ops
 - **Scrum Master:** (Asignar)
@@ -361,9 +362,84 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 
 ---
 
-## Links Relacionados
+## Links Relacionados🔗
 
 - [Product Backlog](./product_backlog.md)
 - [Sprint Planning](./sprint_planning.md) (por crear)
 - [Architecture Decision Records](./adr/) (por crear)
+
+
+**Notas de Dependencias:** 📓
+- TASK-1 es **bloqueador** para TASK-2, TASK-3 y TASK-4
+- TASK-2 es **bloqueador** para TASK-3 y TASK-4
+- TASK-4 es **bloqueador** para TASK-5
+- Las tareas pueden iniciarse con trabajo frontend en paralelo mientras se espera completar el backend
+
+---
+
+## Impedimentos Identificados 🪪
+
+### Impedimentos Potenciales 🪶
+
+| ID | Impedimento | Impacto | Severidad | Plan de Mitigación |
+|----|----|--------|-----------|-------------------|
+| IMP-1 | **Servicio de Email no configurado** | Bloquea TASK-1 (envío de confirmación), TASK-2 (notificaciones) y TASK-3 | Alta | Acordar proveedor (SendGrid/Mailgun) en reunión de kickoff y provisionar acceso antes de sprint |
+| IMP-2 | **Servicio CAPTCHA sin integración** | Bloquea TASK-1 (validación de registro) | Media | Elegir provider (Google reCAPTCHA, hCaptcha) y obtener API keys en inicio del sprint |
+| IMP-3 | **CDN no contratado para imágenes** | Bloquea TASK-4 (almacenamiento optimizado de imágenes) | Media | Evaluar opciones (Cloudinary, CloudFront, Imgix) en pre-sprint y presupuestar |
+| IMP-4 | **Base de datos no configurada** | Bloquea todos los tasks | Crítica | Setup de DB environment (dev, staging) antes de Day 1 del sprint |
+| IMP-5 | **Falta de definición de esquema de BD** | Bloquea backend de todos los tasks | Alta | Completar diagrama ER y document ERD en pre-sprint |
+| IMP-6 | **Ambiente de desarrollo incompleto** | Bloquea inicio de desarrollo en paralelo | Media | Documentar stack tech, crear docker-compose, setup repositorio con estructura base |
+| IMP-7 | **Indefinición de estándares de seguridad** | Afecta decisiones de arquitectura en TASK-2 y TASK-3 | Media | Crear Security & Architecture Decision Records (ADR) en semana 0 del sprint |
+
+### Acciones Preventivas 👆
+
+- ✅ **Semana previa al sprint:** Setup de infraestructura (DB, servicios externos)
+- ✅ **Day 0 del sprint:** Kickoff con todas las keys/credenciales
+- ✅ **Documentación:** Guía setup local lista antes de sprint
+- ✅ **Slack urgente:** Canal #impedimentos-sprint1 para comunicación inmediata
+
+---
+
+## Definición de Hecho (Definition of Done) 🪪
+
+- [ ] Código revisado y aprobado en PR
+- [ ] Tests unitarios con cobertura >80%
+- [ ] Tests de integración pasando
+- [ ] Documentación actualizada
+- [ ] Sin console.log o código de debug
+- [ ] Validaciones de seguridad implementadas
+- [ ] Manejo de errores robusto
+- [ ] Responsive en mobile/tablet/desktop
+- [ ] Performance aceptable (Lighthouse >85)
+- [ ] Accesibilidad WCAG 2.1 AA
+- [ ] Pruebas manuales QA completadas
+
+---
+
+## Notas del Sprint 📔
+
+- Enfoque en autenticación y seguridad como base
+- Establecer patrones de código reutilizable
+- Documentar decisiones de arquitectura
+- Preparar CI/CD pipeline
+- Comunicación diaria en standup mañanas (9:00 AM)
+- Resuelver impedimentos en máximo 24 horas
+
+---
+
+## Roles 🗞️
+
+- **Product Owner:** medinapelaeza-ops
+- **Scrum Master:** (moi)
+- **Equipo de Desarrollo:** (🏈)
+
+---
+
+## Links Relacionados 🔗
+
+- [Product Backlog](./product_backlog.md)
+- [Sprint Planning](./sprint_planning.md) (por crear)
+- [Architecture Decision Records](./adr/) (por crear)
+- [Security Guidelines](./security_guidelines.md) (por crear)
+- [API Specification](./api_spec.md) (por crear)
 
