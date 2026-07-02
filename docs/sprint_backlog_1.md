@@ -328,32 +328,6 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 
 ---
 
-## Definición de Hecho (Definition of Done):
-
-- [ ] Código revisado y aprobado en PR
-- [ ] Tests unitarios con cobertura >80%
-- [ ] Tests de integración pasando
-- [ ] Documentación actualizada
-- [ ] Sin console.log o código de debug
-- [ ] Validaciones de seguridad implementadas
-- [ ] Manejo de errores robusto
-- [ ] Responsive en mobile/tablet/desktop
-- [ ] Performance aceptable (Lighthouse >85)
-- [ ] Accesibilidad WCAG 2.1 AA
-- [ ] Pruebas manuales QA completadas
-
----
-
-## Notas del Sprint📓
-
-
-- Enfoque en autenticación y seguridad como base
-- Establecer patrones de código reutilizable
-- Documentar decisiones de arquitectura
-- Preparar CI/CD pipeline
-
----
-
 ## Roles:
 
 - **Product Owner:** medinapelaeza-ops
