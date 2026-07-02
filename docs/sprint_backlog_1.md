@@ -1,4 +1,4 @@
-# Sprint Backlog 1 - El Culinario
+# Sprint Backlog🕚 1 - El Culinario
 
 **Sprint Duration:** 2 weeks  
 **Sprint Goal:** Establecer los cimientos de autenticación y gestión de usuarios para la plataforma El Culinario.
