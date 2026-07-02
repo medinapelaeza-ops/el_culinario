@@ -325,15 +325,6 @@ Galería de platillos con búsqueda, filtrado y ordenamiento.
 ✓ Escenario 6: Ordenar platillos  
 ✓ Escenario 7: Ver detalle del platillo  
 ✓ Escenario 8: Contador de visualizaciones  
-
----
-
-## Roles:
-
-- **Product Owner:** medinapelaeza-ops
-- **Scrum Master:** (Asignar)
-- **Equipo de Desarrollo:** (Asignar)
-
 ---
 
 ## Links Relacionados🔗
