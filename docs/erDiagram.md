@@ -1,151 +1,145 @@
+   # Diagrama Entidad-Relación - El Culinario
 
-``` Mermaid
+## Diagrama ER Completo
+
+```mermaid
 erDiagram
+    USUARIO ||--o{ PLATILLO : crea
+    USUARIO ||--o{ RESENA : escribe
+    USUARIO ||--o{ FAVORITO : guarda
+    USUARIO ||--o{ NOTIFICACION : recibe
+    USUARIO ||--o{ HISTORIAL_PLATILLO : registra
+    USUARIO ||--o{ HISTORIAL_RECETA : registra
 
-    Usuario {
+    CATEGORIA ||--o{ PLATILLO : clasifica
+
+    PLATILLO ||--|| RECETA : contiene
+    PLATILLO ||--o{ HISTORIAL_PLATILLO : tiene
+    PLATILLO ||--o{ SEGUIDOR_PLATILLO : es_seguido
+
+    RECETA ||--o{ PASO : contiene
+    RECETA ||--o{ RECETA_INGREDIENTE : utiliza
+    RECETA ||--o{ RESENA : recibe
+    RECETA ||--o{ FAVORITO : es_favorito
+    RECETA ||--o{ HISTORIAL_RECETA : tiene
+
+    INGREDIENTE ||--o{ RECETA_INGREDIENTE : pertenece
+
+    USUARIO ||--o{ SEGUIDOR_PLATILLO : sigue
+
+    USUARIO {
         int id PK
         string nombre
         string email
-        string passwordHash
-        string fotoPerfil
-        bool emailVerificado
-        datetime fechaRegistro
+        string password_hash
+        string foto_perfil
+        bool email_verificado
+        datetime fecha_registro
         bool activo
     }
 
-    Categoria {
+    CATEGORIA {
         int id PK
         string nombre
         string descripcion
     }
 
-    Platillo {
+    PLATILLO {
         int id PK
-        int usuarioId FK
-        int categoriaId FK
+        int usuario_id FK
+        int categoria_id FK
         string nombre
         string descripcion
         string dificultad
-        int tiempoPreparacion
+        int tiempo_preparacion
         int porciones
         string imagen
         string slug
         int vistas
         bool eliminado
-        datetime creadoEn
+        datetime creado_en
     }
 
-    Receta {
+    RECETA {
         int id PK
-        int platilloId FK
+        int platillo_id FK
         string titulo
         string descripcion
         string consejos
         bool publicada
         bool borrador
-        datetime fechaPublicacion
+        datetime fecha_publicacion
     }
 
-    Ingrediente {
+    INGREDIENTE {
         int id PK
         string nombre
     }
 
-    RecetaIngrediente {
+    RECETA_INGREDIENTE {
         int id PK
-        int recetaId FK
-        int ingredienteId FK
+        int receta_id FK
+        int ingrediente_id FK
         double cantidad
         string unidad
         string nota
     }
 
-    Paso {
+    PASO {
         int id PK
-        int recetaId FK
+        int receta_id FK
         int numero
         string descripcion
         string imagen
         int tiempo
     }
 
-    Resena {
+    RESENA {
         int id PK
-        int recetaId FK
-        int usuarioId FK
+        int receta_id FK
+        int usuario_id FK
         int estrellas
         string comentario
         string foto
         datetime fecha
     }
 
-    Favorito {
+    FAVORITO {
         int id PK
-        int usuarioId FK
-        int recetaId FK
+        int usuario_id FK
+        int receta_id FK
         datetime fecha
     }
 
-    SeguidorPlatillo {
+    SEGUIDOR_PLATILLO {
         int id PK
-        int usuarioId FK
-        int platilloId FK
+        int usuario_id FK
+        int platillo_id FK
     }
 
-    Notificacion {
+    NOTIFICACION {
         int id PK
-        int usuarioId FK
+        int usuario_id FK
         string titulo
         string mensaje
         bool leida
         datetime fecha
     }
 
-    HistorialPlatillo {
+    HISTORIAL_PLATILLO {
         int id PK
-        int platilloId FK
-        int usuarioId FK
+        int platillo_id FK
+        int usuario_id FK
         int version
         string cambios
         datetime fecha
     }
 
-    HistorialReceta {
+    HISTORIAL_RECETA {
         int id PK
-        int recetaId FK
-        int usuarioId FK
+        int receta_id FK
+        int usuario_id FK
         int version
         string cambios
         datetime fecha
     }
-
-    Usuario ||--o{ Platillo : crea
-
-    Categoria ||--o{ Platillo : clasifica
-
-    Platillo ||--|| Receta : posee
-
-    Receta ||--o{ Paso : contiene
-
-    Receta ||--o{ RecetaIngrediente : utiliza
-
-    Ingrediente ||--o{ RecetaIngrediente : pertenece
-
-    Usuario ||--o{ Resena : escribe
-
-    Receta ||--o{ Resena : recibe
-
-    Usuario ||--o{ Favorito : guarda
-
-    Receta ||--o{ Favorito : favorito
-
-    Usuario ||--o{ SeguidorPlatillo : sigue
-
-    Platillo ||--o{ SeguidorPlatillo : tiene
-
-    Usuario ||--o{ Notificacion : recibe
-
-    Platillo ||--o{ HistorialPlatillo : versiones
-
-    Receta ||--o{ HistorialReceta : versiones
-    ``` Mermaid
